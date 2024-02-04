@@ -1,2 +1,7 @@
 # sunkenland
-Files to create the Sunkenland dedicated server on Ubuntu
+Files to create the Sunkenland dedicated server on Ubuntu.
+
+You can find the Docker image on Docker Hub:
+https://hub.docker.com/r/adrianhowchin/sunkenland
+
+To run the server, please see the instructions in the Docker Hub link above.
