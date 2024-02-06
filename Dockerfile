@@ -1,4 +1,5 @@
 FROM ubuntu:22.04
+
 RUN mkdir /opt/sunkenland
 WORKDIR /opt/sunkenland
 
@@ -13,12 +14,16 @@ RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/d
 RUN apt update;
 RUN apt install --install-recommends winehq-stable -y
 
+# Install Steamcmd
+# For info, see: https://developer.valvesoftware.com/wiki/SteamCMD
+RUN add-apt-repository multiverse; apt update
+RUN echo steam steam/question select "I AGREE" | debconf-set-selections; echo steam steam/license note '' | debconf-set-selections
+RUN apt install steamcmd -y; ln -s /usr/games/steamcmd /usr/bin/steamcmd
+# Now that we have Steamcmd installed, install the Sunkenland Dedicated Server from Steam
+RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2667530 validate +quit
+
 # Copy in the server start script
 COPY server_start.sh .
-
-# Copy in the Sunkenland Dedicated Server zipfile
-COPY SDS.zip .
-RUN unzip SDS.zip
 
 # The command that runs on containr start
 CMD /opt/sunkenland/server_start.sh
