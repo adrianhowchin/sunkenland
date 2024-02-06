@@ -25,4 +25,5 @@ export DISPLAY=:1
 echo "Xfvb server start at :1"
 
 # Start the Sunkenland server
+cd "/root/Steam/steamapps/common/Sunkenland Dedicated Server"
 wine Sunkenland-DedicatedServer.exe -nographics -batchmode -logFile /opt/sunkenland/Worlds/sunkenland.log -maxPlayerCapacity 10 -password ${PASSWORD} -worldGuid ${GUID} -region ${REGION}
