@@ -6,4 +6,4 @@ https://hub.docker.com/r/adrianhowchin/sunkenland
 
 To run the server, please see the instructions in the Docker Hub link above.
 
-Successfully tested against the latest version: 0.2.10.
+To see which versions this works against, see the Docker link above.
