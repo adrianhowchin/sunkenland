@@ -7,13 +7,13 @@ REGION=${dREGION}
 set SteamAppId=2080690
 
 # Clean up wine and init
-# The server fails to start if we try to do it in our Dockerfile, so need to do it here in the server start script
+# The server fails to start if we try to do this in our Dockerfile, so need to do it here in the server start script
 rm -rf ~/.wine
 wineboot --init
 sleep 15 # Need to sleep to give wineboot init time to complete
 
 # Setup the world
-# The server fails to start if we try to do it in our Dockerfile, so need to do it here in the server start script
+# The server fails to start if we try to do this in our Dockerfile, so need to do it here in the server start script
 mkdir -p /root/.wine/drive_c/users/root/AppData/LocalLow/Vector3\ Studio/Sunkenland/
 cd /root/.wine/drive_c/users/root/AppData/LocalLow/Vector3\ Studio/Sunkenland/
 ln -s /opt/sunkenland/Worlds /root/.wine/drive_c/users/root/AppData/LocalLow/Vector3\ Studio/Sunkenland/Worlds
