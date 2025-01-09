@@ -24,6 +24,7 @@ RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2
 
 # Copy in the server start script
 COPY server_start.sh .
+RUN chmod a+x server_start.sh
 
 # The command that runs on containr start
 CMD /opt/sunkenland/server_start.sh
