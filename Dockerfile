@@ -5,7 +5,7 @@ WORKDIR /opt/sunkenland
 
 # Install utils to help make life easier. We need X Virtual Framebuffer for the graphics, even though its headless?
 RUN apt update;
-RUN apt install unzip wget vim xvfb net-tools -y
+RUN apt install unzip wget vim xvfb net-tools dos2unix -y
 
 # Install Wine so that we can run Windows programs under Linux
 RUN dpkg --add-architecture i386; mkdir -pm755 /etc/apt/keyrings;
@@ -25,6 +25,7 @@ RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2
 # Copy in the server start script
 COPY server_start.sh .
 RUN chmod a+x server_start.sh
+RUN dos2unix server_start.sh
 
 # The command that runs on containr start
 CMD /opt/sunkenland/server_start.sh
