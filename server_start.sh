@@ -25,7 +25,7 @@ export DISPLAY=:1
 echo "Xfvb server start at :1"
 
 # Start the Sunkenland server
-cd "/root/Steam/steamapps/common/Sunkenland Dedicated Server"
+cd "/root/.steam/steam/steamapps/common/Sunkenland Dedicated Server"
 wine Sunkenland-DedicatedServer.exe -nographics -batchmode -logFile /opt/sunkenland/Worlds/sunkenland.log -maxPlayerCapacity 10 -password ${PASSWORD} -worldGuid ${GUID} -region ${REGION}
 
 # If you want to change the ports (e.g. because of a port conflict say with Palworld), use the "-port" and "-queryport" arguments. It would then look like this:
