@@ -28,7 +28,7 @@ RUN chmod a+x server_start.sh
 RUN dos2unix server_start.sh
 
 # The command that runs on containr start
-CMD /opt/sunkenland/server_start.sh
+CMD ["/opt/sunkenland/server_start.sh"]
 
 # Make sure you setup port forwarding on your router for port 27015 (if required)
 EXPOSE 27015
