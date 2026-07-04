@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:24.04
 
 RUN mkdir /opt/sunkenland
 WORKDIR /opt/sunkenland
@@ -9,9 +9,8 @@ RUN apt install unzip wget vim xvfb net-tools dos2unix -y
 
 # Install Wine so that we can run Windows programs under Linux
 RUN dpkg --add-architecture i386; mkdir -pm755 /etc/apt/keyrings;
-RUN wget -O /tmp/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key;
-RUN gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key /tmp/winehq-archive.key;
-RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/resolute/winehq-resolute.sources;
+RUN wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key;
+RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources;
 RUN apt update;
 RUN apt install --install-recommends winehq-stable -y
 
