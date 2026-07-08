@@ -20,7 +20,7 @@ RUN add-apt-repository multiverse; apt update
 RUN echo steam steam/question select "I AGREE" | debconf-set-selections; echo steam steam/license note '' | debconf-set-selections
 RUN apt install steamcmd -y; ln -s /usr/games/steamcmd /usr/bin/steamcmd
 # Now that we have Steamcmd installed, install the Sunkenland Dedicated Server from Steam
-RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2667530 validate +quit
+RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2667530 -beta public-test validate +quit
 
 # Copy in the server start script
 COPY server_start.sh .
