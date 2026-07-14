@@ -1,0 +1,17 @@
+FROM adrianhowchin/wine-steamcmd:latest
+
+RUN mkdir /opt/sunkenland
+WORKDIR /opt/sunkenland
+
+# Install the Sunkenland Dedicated Server from Steam
+RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2667530 validate +quit
+
+# Copy in the server start script
+COPY server_start.sh .
+RUN chmod a+x server_start.sh
+RUN dos2unix server_start.sh
+
+# The command that runs on containr start
+CMD ["/opt/sunkenland/server_start.sh"]
+
+EXPOSE 27015
