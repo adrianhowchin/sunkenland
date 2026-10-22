@@ -4,6 +4,14 @@ RUN mkdir /opt/sunkenland
 WORKDIR /opt/sunkenland
 
 # Install the Sunkenland Dedicated Server from Steam
+RUN for i in 1 2 3 4 5 6 7 8; do \
+      steamcmd +@sSteamCmdForcePlatformType windows \
+               +login anonymous \
+               +app_info_update 1 \
+               +app_update 2667530 validate \
+               +quit && exit 0; \
+      echo "steamcmd attempt $i failed, retrying..."; sleep 5; \
+    done; exit 1
 RUN steamcmd +login anonymous +@sSteamCmdForcePlatformType windows +app_update 2667530 validate +quit
 
 # Copy in the server start script
